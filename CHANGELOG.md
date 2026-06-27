@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/arcangelo7/software-citation-sync/compare/v1.1.2...v1.1.3) (2026-06-27)
+
+
+### Bug Fixes
+
+* **action:** use a new name and add branding [release] ([8e6ddb4](https://github.com/arcangelo7/software-citation-sync/commit/8e6ddb41ed57f6b9b0d03f9ac66d8359d8a71435))
+
 ## [1.1.2](https://github.com/arcangelo7/software-citation-action/compare/v1.1.1...v1.1.2) (2026-06-27)
 
 
