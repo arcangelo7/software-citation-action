@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/arcangelo7/software-citation-sync/compare/v2.0.0...v2.0.1) (2026-06-27)
+
+
+### Bug Fixes
+
+* **docs:** update action version in docs [release] ([a6897f3](https://github.com/arcangelo7/software-citation-sync/commit/a6897f3de24c6a18a06987ad039f185706e6cbcf))
+
 # [2.0.0](https://github.com/arcangelo7/software-citation-sync/compare/v1.1.3...v2.0.0) (2026-06-27)
 
 
