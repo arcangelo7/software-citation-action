@@ -18,6 +18,12 @@ class CitationConfig:
 
 
 @dataclass(frozen=True)
+class ProjectMetadata:
+    title: str
+    authors: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class CheckResult:
     errors: tuple[str, ...]
 

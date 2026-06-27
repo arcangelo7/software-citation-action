@@ -8,7 +8,8 @@ from pathlib import Path
 
 import pytest
 
-from software_citation_action.discovery import discover_version
+from software_citation_action.config import ProjectMetadata
+from software_citation_action.discovery import discover_project_metadata, discover_version
 
 
 def test_discover_version_requires_package_json_version(tmp_path: Path) -> None:
@@ -18,3 +19,23 @@ def test_discover_version_requires_package_json_version(tmp_path: Path) -> None:
         discover_version(tmp_path)
 
     assert exc_info.value.args == ("version",)
+
+
+def test_discover_project_metadata_from_pyproject(tmp_path: Path) -> None:
+    (tmp_path / "pyproject.toml").write_text(
+        "\n".join(
+            [
+                "[project]",
+                'name = "ramose"',
+                'version = "2.8.0"',
+                'authors = [{ name = "Arcangelo Massari", email = "github@a.arcangelomassari.com" }]',
+                "",
+            ],
+        ),
+        encoding="utf-8",
+    )
+
+    assert discover_project_metadata(tmp_path) == ProjectMetadata(
+        title="ramose",
+        authors=("Arcangelo Massari",),
+    )

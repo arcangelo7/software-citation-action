@@ -14,7 +14,7 @@ from cffconvert.citation import Citation  # type: ignore[reportMissingTypeStubs]
 from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap, CommentedSeq
 
-from software_citation_action.config import CitationConfig
+from software_citation_action.config import CitationConfig, ProjectMetadata
 
 
 def load_citation(path: Path) -> CommentedMap:
@@ -44,8 +44,22 @@ def render_citation_bibtex(data: CommentedMap, reference: str, url: str) -> str:
     return citation.as_bibtex(reference=reference).strip()
 
 
+def create_citation(project_metadata: ProjectMetadata) -> CommentedMap:
+    data = CommentedMap()
+    data["cff-version"] = "1.2.0"
+    data["message"] = "If you use this software, please cite it using these metadata."
+    data["title"] = project_metadata.title
+    authors = CommentedSeq()
+    for author_name in project_metadata.authors:
+        author = CommentedMap()
+        author["name"] = author_name
+        authors.append(author)
+    data["authors"] = authors
+    return data
+
+
 def write_citation(path: Path, data: CommentedMap) -> bool:
-    old_content = path.read_text(encoding="utf-8")
+    old_content = path.read_text(encoding="utf-8") if path.exists() else None
     new_content = render_citation(data)
     if old_content == new_content:
         return False

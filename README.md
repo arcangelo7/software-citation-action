@@ -20,6 +20,7 @@ The action uses:
 - the current UTC date as `date-released`.
 - the repository where the workflow is running.
 
+When `CITATION.cff` is absent, it creates one from project metadata in `package.json` or `pyproject.toml`.
 It updates citation metadata, updates the marked README citation block, and validates `CITATION.cff`.
 It also sends the repository URL to Software Heritage for archiving, waits for the archive job to finish, and uses the returned snapshot URL in the README BibTeX entry.
 The selected manifest must define a string `version`.
@@ -34,19 +35,8 @@ The action exposes `changed`, which is `true` when `CITATION.cff` or `README.md`
 
 ## README block
 
-The action manages only this marked block. The BibTeX entry is generated from the updated `CITATION.cff`.
+The action manages one marked block delimited by the `software-citation-action:start` and `software-citation-action:end` HTML comments.
+The BibTeX entry is generated from the updated `CITATION.cff`.
 
-````markdown
 <!-- software-citation-action:start -->
-To cite the latest version of this software (2.8.0), use this BibTeX entry:
-
-```bibtex
-@misc{ramose-2.8.0,
-author = {Massari, Arcangelo},
-title = {RAMOSE},
-url = {https://archive.softwareheritage.org/swh:1:snp:fc0b501f594531b2b8f694469cc38aed15897bbe;origin=https://github.com/arcangelo7/ramose},
-year = {2026}
-}
-```
 <!-- software-citation-action:end -->
-````

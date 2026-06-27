@@ -9,12 +9,13 @@ import copy
 from software_citation_action.cff import (
     apply_citation_metadata,
     check_citation_metadata,
+    create_citation,
     load_citation,
     render_citation_bibtex,
     validate_with_cffconvert,
     write_citation,
 )
-from software_citation_action.config import CheckResult, CitationConfig
+from software_citation_action.config import CheckResult, CitationConfig, ProjectMetadata
 from software_citation_action.readme import bibtex_reference, readme_block_matches, write_readme_block
 
 
@@ -33,8 +34,14 @@ def check(config: CitationConfig, swh_url: str) -> CheckResult:
     return CheckResult(tuple(errors))
 
 
-def write_citation_metadata(config: CitationConfig) -> bool:
-    data = load_citation(config.citation_path)
+def write_citation_metadata(config: CitationConfig, project_metadata: ProjectMetadata | None = None) -> bool:
+    if config.citation_path.exists():
+        data = load_citation(config.citation_path)
+    else:
+        if project_metadata is None:
+            msg = f"{config.citation_path} does not exist and project metadata was not provided"
+            raise FileNotFoundError(msg)
+        data = create_citation(project_metadata)
     apply_citation_metadata(data, config)
     return write_citation(config.citation_path, data)
 

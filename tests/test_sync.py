@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from software_citation_action.config import CitationConfig
+from software_citation_action.config import CitationConfig, ProjectMetadata
 from software_citation_action.readme import write_readme_block
 from software_citation_action.sync import check, write_citation_metadata, write_readme
 
@@ -95,6 +95,42 @@ def test_write_updates_citation_and_readme(tmp_path: Path) -> None:
             "}",
             "```",
             "<!-- software-citation-action:end -->",
+            "",
+        ],
+    )
+
+
+def test_write_creates_missing_citation(tmp_path: Path) -> None:
+    citation_path = tmp_path / "CITATION.cff"
+
+    citation_changed = write_citation_metadata(
+        CitationConfig(
+            citation_path=citation_path,
+            readme_path=tmp_path / "README.md",
+            version="2.8.0",
+            date_released="2026-06-25",
+            repository_code="https://github.com/arcangelo7/ramose",
+        ),
+        ProjectMetadata(
+            title="ramose",
+            authors=("Arcangelo Massari",),
+        ),
+    )
+
+    assert citation_changed is True
+    assert citation_path.read_text(encoding="utf-8") == "\n".join(
+        [
+            "cff-version: 1.2.0",
+            "message: If you use this software, please cite it using these metadata.",
+            "title: ramose",
+            "authors:",
+            "  - name: Arcangelo Massari",
+            "version: 2.8.0",
+            "date-released: '2026-06-25'",
+            "repository-code: https://github.com/arcangelo7/ramose",
+            "repository: "
+            "https://archive.softwareheritage.org/browse/origin/?origin_url="
+            "https%3A%2F%2Fgithub.com%2Farcangelo7%2Framose",
             "",
         ],
     )

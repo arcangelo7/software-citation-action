@@ -8,8 +8,8 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 
-from software_citation_action.config import CitationConfig
-from software_citation_action.discovery import discover_version
+from software_citation_action.config import CitationConfig, ProjectMetadata
+from software_citation_action.discovery import discover_project_metadata, discover_version
 from software_citation_action.software_heritage import archive_origin
 from software_citation_action.sync import (
     check,
@@ -29,6 +29,7 @@ def main() -> None:
     version = _discover_required_version(root)
     date_released = _current_date()
     repository_code = _current_repository_url()
+    project_metadata = _discover_required_project_metadata(root) if not CITATION_PATH.exists() else None
     citation_config = CitationConfig(
         citation_path=CITATION_PATH,
         readme_path=README_PATH,
@@ -37,7 +38,7 @@ def main() -> None:
         repository_code=repository_code,
     )
 
-    citation_changed = write_citation_metadata(citation_config)
+    citation_changed = write_citation_metadata(citation_config, project_metadata)
     citation_check_result = check_citation(citation_config)
     for error in citation_check_result.errors:
         print(error)
@@ -65,6 +66,14 @@ def _discover_required_version(root: Path) -> str:
         msg = "Software version not found in package.json or pyproject.toml"
         raise ValueError(msg)
     return version
+
+
+def _discover_required_project_metadata(root: Path) -> ProjectMetadata:
+    project_metadata = discover_project_metadata(root)
+    if project_metadata is None:
+        msg = "Project metadata not found in package.json or pyproject.toml"
+        raise ValueError(msg)
+    return project_metadata
 
 
 def _current_date() -> str:
