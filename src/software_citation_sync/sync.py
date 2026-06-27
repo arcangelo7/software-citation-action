@@ -4,7 +4,7 @@
 
 from __future__ import annotations
 
-from software_citation_action.cff import (
+from software_citation_sync.cff import (
     apply_citation_metadata,
     create_citation,
     load_citation,
@@ -12,8 +12,8 @@ from software_citation_action.cff import (
     validate_with_cffconvert,
     write_citation,
 )
-from software_citation_action.config import CheckResult, CitationConfig, ProjectMetadata
-from software_citation_action.readme import bibtex_reference, readme_block_matches, write_readme_block
+from software_citation_sync.config import CheckResult, CitationConfig, ProjectMetadata
+from software_citation_sync.readme import bibtex_reference, readme_block_matches, write_readme_block
 
 
 def check(config: CitationConfig) -> CheckResult:

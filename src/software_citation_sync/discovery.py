@@ -11,7 +11,7 @@ from typing import cast
 import tomlkit
 from tomlkit.items import Table
 
-from software_citation_action.config import ProjectMetadata
+from software_citation_sync.config import ProjectMetadata
 
 
 def discover_version(root: Path) -> str | None:

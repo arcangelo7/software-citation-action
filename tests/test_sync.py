@@ -8,9 +8,9 @@ from pathlib import Path
 
 import pytest
 
-from software_citation_action.config import CitationConfig, ProjectMetadata
-from software_citation_action.readme import write_readme_block
-from software_citation_action.sync import check, write_citation_metadata, write_readme
+from software_citation_sync.config import CitationConfig, ProjectMetadata
+from software_citation_sync.readme import write_readme_block
+from software_citation_sync.sync import check, write_citation_metadata, write_readme
 
 SPDX_COPYRIGHT_NONE = "# SPDX-FileCopyrightText: NONE"
 SPDX_LICENSE_CC0 = "# SPDX-License-" + "Identifier: CC0-1.0"

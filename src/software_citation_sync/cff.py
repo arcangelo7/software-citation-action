@@ -11,7 +11,7 @@ from pathlib import Path
 from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap, CommentedSeq
 
-from software_citation_action.config import CitationConfig, ProjectMetadata
+from software_citation_sync.config import CitationConfig, ProjectMetadata
 
 
 def load_citation(path: Path) -> CommentedMap:

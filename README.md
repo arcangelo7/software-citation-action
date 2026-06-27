@@ -4,13 +4,13 @@ SPDX-FileCopyrightText: 2026 Arcangelo Massari <github@a.arcangelomassari.com>
 SPDX-License-Identifier: ISC
 -->
 
-# Software citation action
+# Software citation sync
 
-[![Test](https://github.com/arcangelo7/software-citation-action/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/arcangelo7/software-citation-action/actions/workflows/test.yml)
-[![Pyright](https://github.com/arcangelo7/software-citation-action/actions/workflows/pyright.yml/badge.svg?branch=master)](https://github.com/arcangelo7/software-citation-action/actions/workflows/pyright.yml)
-[![Ruff](https://github.com/arcangelo7/software-citation-action/actions/workflows/ruff.yml/badge.svg?branch=master)](https://github.com/arcangelo7/software-citation-action/actions/workflows/ruff.yml)
-[![Coverage](https://arcangelo7.github.io/software-citation-action/coverage/coverage-badge.svg)](https://arcangelo7.github.io/software-citation-action/coverage/)
-[![REUSE status](https://api.reuse.software/badge/github.com/arcangelo7/software-citation-action)](https://api.reuse.software/info/github.com/arcangelo7/software-citation-action)
+[![Test](https://github.com/arcangelo7/software-citation-sync/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/arcangelo7/software-citation-sync/actions/workflows/test.yml)
+[![Pyright](https://github.com/arcangelo7/software-citation-sync/actions/workflows/pyright.yml/badge.svg?branch=master)](https://github.com/arcangelo7/software-citation-sync/actions/workflows/pyright.yml)
+[![Ruff](https://github.com/arcangelo7/software-citation-sync/actions/workflows/ruff.yml/badge.svg?branch=master)](https://github.com/arcangelo7/software-citation-sync/actions/workflows/ruff.yml)
+[![Coverage](https://arcangelo7.github.io/software-citation-sync/coverage/coverage-badge.svg)](https://arcangelo7.github.io/software-citation-sync/coverage/)
+[![REUSE status](https://api.reuse.software/badge/github.com/arcangelo7/software-citation-sync)](https://api.reuse.software/info/github.com/arcangelo7/software-citation-sync)
 
 GitHub Action for keeping software citation metadata aligned with releases and Software Heritage.
 
@@ -30,7 +30,7 @@ The selected manifest must define a string `version`.
 ## GitHub action
 
 ```yaml
-- uses: arcangelo7/software-citation-action@v1
+- uses: arcangelo7/software-citation-sync@v1
 ```
 
 The action exposes `changed`, which is `true` when `CITATION.cff` or `README.md` changed.
@@ -44,9 +44,9 @@ The BibTeX entry is generated from the updated `CITATION.cff`.
 To cite the latest version of this software (1.1.3), use this BibTeX entry:
 
 ```bibtex
-@software{software-citation-action-1.1.3,
+@software{software-citation-sync-1.1.3,
 author = {Arcangelo Massari},
-title = {software-citation-action},
+title = {software-citation-sync},
 url = {https://archive.softwareheritage.org/swh:1:snp:2d8d044c88ab07c85d7b388f51e16445a82a2066;origin=https://github.com/arcangelo7/software-citation-sync},
 version = {1.1.3},
 year = {2026}

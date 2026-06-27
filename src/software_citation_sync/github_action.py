@@ -8,10 +8,10 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 
-from software_citation_action.config import CitationConfig, ProjectMetadata
-from software_citation_action.discovery import discover_project_metadata, discover_version
-from software_citation_action.software_heritage import archive_origin
-from software_citation_action.sync import (
+from software_citation_sync.config import CitationConfig, ProjectMetadata
+from software_citation_sync.discovery import discover_project_metadata, discover_version
+from software_citation_sync.software_heritage import archive_origin
+from software_citation_sync.sync import (
     check,
     write_citation_metadata,
     write_readme,

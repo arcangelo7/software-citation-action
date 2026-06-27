@@ -8,8 +8,8 @@ from pathlib import Path
 
 import pytest
 
-from software_citation_action.config import ProjectMetadata
-from software_citation_action.discovery import discover_project_metadata, discover_version
+from software_citation_sync.config import ProjectMetadata
+from software_citation_sync.discovery import discover_project_metadata, discover_version
 
 
 def test_discover_version_requires_package_json_version(tmp_path: Path) -> None:

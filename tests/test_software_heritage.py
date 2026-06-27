@@ -7,7 +7,7 @@ from __future__ import annotations
 import pytest
 import requests_mock
 
-from software_citation_action.software_heritage import archive_origin
+from software_citation_sync.software_heritage import archive_origin
 
 
 def test_archive_origin_returns_swh_url(requests_mock: requests_mock.Mocker) -> None:

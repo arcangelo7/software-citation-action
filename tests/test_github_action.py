@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 import requests_mock
 
-from software_citation_action import github_action
+from software_citation_sync import github_action
 
 SPDX_COPYRIGHT_NONE = "# SPDX-FileCopyrightText: NONE"
 SPDX_LICENSE_CC0 = "# SPDX-License-" + "Identifier: CC0-1.0"
