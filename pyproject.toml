@@ -1,6 +1,6 @@
 [project]
 name = "software-citation-action"
-version = "0.1.0"
+version = "1.0.0"
 description = "GitHub Action for keeping software citation metadata aligned with releases and Software Heritage."
 readme = "README.md"
 authors = [
